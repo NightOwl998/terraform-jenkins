@@ -12,17 +12,17 @@ module "lb" {
 
 
 
- listener = [
-  {
-   instance_port     = 8080
-    instance_protocol = "HTTP"
-   lb_port           = 80
-   lb_protocol       = "HTTP"
- },
-  {
-    instance_port      = 8080
-    instance_protocol  = "HTTP"
-    lb_port            = 443
+  listener = [
+    {
+      instance_port     = 8080
+      instance_protocol = "HTTP"
+      lb_port           = 80
+      lb_protocol       = "HTTP"
+    },
+    {
+      instance_port      = 8080
+      instance_protocol  = "HTTP"
+      lb_port            = 443
       lb_protocol        = "HTTPS"
       ssl_certificate_id = module.acm.acm_certificate_arn
     },
@@ -36,13 +36,13 @@ module "lb" {
     timeout             = 5
 
   }
- 
+
   number_of_instances = 1
   instances           = [aws_instance.jenkins.id]
   tags = {
     Name = "my-elb"
   }
 
-   
+
 
 }

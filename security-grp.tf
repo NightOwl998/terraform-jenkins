@@ -60,8 +60,8 @@ resource "aws_security_group" "lb" {
     for_each = var.elb_port
     content {
 
-      from_port   = 80
-      to_port     = 80
+      from_port   = ingress.value
+      to_port     = ingress.value
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
     }
